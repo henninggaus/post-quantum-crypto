@@ -1,7 +1,6 @@
 /// Support for doing something awesome.
 ///
 /// More dartdocs go here.
-part of post_quantum_crypto;
 
 const int n = 256;
 const int q = 3329;
