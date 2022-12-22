@@ -38,7 +38,7 @@ class NTT {
     k.value = 1;
 
     for( len.value = 128 ; len.value > 1; len.value>>=1 ) {
-      for( start.value = 0 ; start.value < 0; start.value = j.value + len.value ) {
+      for( start.value = 0 ; start.value < n; start.value = j.value + len.value ) {
         zeta.value = zetas[k.value];
         k.value++;
 
@@ -50,10 +50,34 @@ class NTT {
       }
     }
 
-
     return Poly; // TODO
   }
 
+  Pointer<Int16> invnnt(int value) {
+    final len = calloc<Uint32>();
+    final start = calloc<Uint32>();
+    final j = calloc<Uint32>();
+    final k = calloc<Uint32>();
+
+    final zeta = calloc<Int16>();
+    final t = calloc<Int16>();
+
+    k.value = 127;
+
+    for( len.value = 2 ; len.value < n; len.value <<= 1 ) {
+      for( start.value = 0 ; start.value < n; start.value = j.value + len.value ) {
+        zeta.value = zetas[k.value];
+        k.value--;
+
+        for( j.value = start.value ; j.value < start.value+len.value; j.value++ ) {
+          t.value = Poly[j.value];
+          // ToDo - implement barretReduce
+        }
+      }
+    }
+
+    return Poly; // TODO
+  }
 
   // integer congruent to a * R^-1 mod q
   int montgomeryReduce(int a){
