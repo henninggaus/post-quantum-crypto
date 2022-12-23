@@ -53,7 +53,8 @@ class NTT {
     return Poly; // TODO
   }
 
-  Pointer<Int16> invnnt(int value) {
+  // InvNTT - backward NTT and multiplication by Montgomery factor 2^32.
+  Pointer<Int16> invntt(int value) {
     final len = calloc<Uint32>();
     final start = calloc<Uint32>();
     final j = calloc<Uint32>();
